@@ -1,0 +1,13 @@
+.DS_Store
+
+# no_syncs
+node_modules*
+!node_modules
+
+# no_syncs
+target*
+!target
+
+# Links
+target
+node_modules
