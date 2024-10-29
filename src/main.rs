@@ -44,6 +44,7 @@ fn main() -> Result<()> {
         create_symlink(&base_path, &nosync_path)?;
         if !skip_git {
             add_gitignore(&pwd, folder)?;
+            add_gitignore(&pwd, &format!("{}.nosync", folder))?;
         }
         println!("{}", "Done!".green());
     } else {
@@ -151,7 +152,6 @@ fn add_gitignore(pwd: &PathBuf, folder: &str) -> Result<()> {
 
         writeln!(file, "\n# no-sync")?;
         writeln!(file, "{}*", folder)?;
-        writeln!(file, "!{}", folder)?;
         println!("Added {} to .gitignore", folder);
     } else {
         println!("{} already in .gitignore", folder);
